@@ -1,0 +1,40 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.camel.sql.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.apache.camel:camel-spring-boot-starter:2.19.3')
+	
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('com.zaxxer:HikariCP:2.5.1')
+	compile('postgresql:postgresql:9.1-901.jdbc4')
+	compile fileTree(dir: 'lib', include: ['*.jar'])
+	compile('org.springframework:spring-jdbc:4.3.10.RELEASE')
+	compile('org.apache.commons:commons-csv:1.4')
+	
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+	
+}
